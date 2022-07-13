@@ -1,0 +1,32 @@
+<div class="card transition transform hover:-translate-y-1 shadow-xl mb-10">
+  <div class="card-body">
+    <label for="select1" class="card-title text-3xl mb-4"
+      >Vs Weather Condition</label
+    >
+    <select
+      id="select1"
+      class="select select-secondary select-lg max-w-xs mb-4"
+      [(ngModel)]="switchY"
+      (change)="Switch()"
+    >
+      <option value="avg_Skilled_Available">Avg Skilled Available</option>
+      <option value="avg_Transportation_Cost">Avg Transportation Cost</option>
+      <option value="avg_Vendors_Available">Avg Vendors Available</option>
+      <option value="avg_Labour_Cost">Avg Labour Cost</option>
+      <option value="avg_Work_Rate">Avg Work Rate</option>
+    </select>
+
+    <div class="flex flex-wrap justify-center px-1">
+      <div>
+        <canvas
+          baseChart
+          width="600"
+          [data]="barChartData"
+          [options]="barChartOptions"
+          [type]="barChartType"
+        >
+        </canvas>
+      </div>
+    </div>
+  </div>
+</div>
