@@ -9,13 +9,10 @@ import { Router } from '@angular/router';
 })
 export class CitynavcardsComponent implements OnInit {
   @Input() city: City;
-  // completedprojects : number;
 
   constructor(private router : Router) { }
   ngOnInit(): void {
     console.log(this.city)
-    // this.completedprojects = this.city.completedOntime + this.city.completedLate;
-    // console.log(this.completedprojects)
   }
   onClick(Id : number) {
     this.router.navigate(['/cities',Id]);

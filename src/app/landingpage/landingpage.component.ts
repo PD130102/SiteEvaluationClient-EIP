@@ -14,7 +14,7 @@ export class LandingpageComponent implements OnInit {
   constructor(private citiesService : CitiesService)   { }
 
   ngOnInit(): void {
-    this.citiesService.getCities().subscribe((cities) => (this.cities = cities));
+    //this.citiesService.getCities().subscribe((cities:any) => (this.cities = cities));
   }
 
 }

@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+
 import { City } from '../City';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import { AvgTimeseries } from '../AvgTimeseries';
-import { Timeseries } from '../Timeseries';
 import { AvgNumerical } from '../AvgNumerical';
 import { PeriodicData } from '../PeriodicData';
 @Injectable({
@@ -15,9 +13,10 @@ export class CitiesService {
 
   constructor(private http: HttpClient) { }
 
-  getCities() : Observable<City[]> {
-    return this.http.get<City[]>(this.rootUrl+'/city')
+  getCities() {
+    //return this.http.get<any>('https://localhost:7210/api/city')
   }
+  /*
   getCitiesbyId( id: number ) : Observable<City[]> {
     return this.http.get<City[]>(this.rootUrl+`/city/${id}`)
   }
@@ -43,19 +42,12 @@ export class CitiesService {
     return this.http.get<AvgNumerical[]>(this.rootUrl+`/city/NumericalTime/Average/Group/Range/${id}?start=${start}&end=${end}`)
   }
 
-
-
+  postNewCategoricalorSubCategory( categoryName: string, subCategoryName: string ) : Observable<any> {
+    return this.http.post(this.rootUrl+`/city/Categorical?CategoricalName=${categoryName}&SubCategoryName=${subCategoryName}`, null)
+  }
   
-  getTimeseriesbyId( id: number ) : Observable<Timeseries[]> {
-    return this.http.get<Timeseries[]>(this.rootUrl+`/timeseries/${id}`)
-  }
-  getAvgTimeseriesbyId( id: number ) : Observable<AvgTimeseries[]> {
-    return this.http.get<AvgTimeseries[]>(this.rootUrl+`/timeseries/average/${id}`)
-  }
-  getAvgTimeseriesbyIdgrpRp( id: number ) : Observable<AvgTimeseries[]> {
-    return this.http.get<AvgTimeseries[]>(this.rootUrl+`/timeseries/average/rulingparty/${id}`)
-  }
-  getAvgTimeseriesbyIdgrpWc( id: number ) : Observable<AvgTimeseries[]> {
-    return this.http.get<AvgTimeseries[]>(this.rootUrl+`/timeseries/average/weathercondition/${id}`)
-  }
+  postNewNumerical( numericalName: string) : Observable<any> {
+    return this.http.post(this.rootUrl+`/city/Numerical?NumericalName=${numericalName}`, null)
+  }*/
+
 }

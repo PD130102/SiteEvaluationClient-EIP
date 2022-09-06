@@ -1,0 +1,1 @@
+//alert("it is getting connected");ng g c 

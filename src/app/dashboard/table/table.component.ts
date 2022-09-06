@@ -1,5 +1,4 @@
 import { Component, Input, OnInit, AfterViewInit, ViewChild, OnChanges, SimpleChanges } from '@angular/core';
-import { Timeseries } from 'src/app/Timeseries';
 import {LiveAnnouncer} from '@angular/cdk/a11y';
 import {MatSort, Sort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
@@ -20,11 +19,7 @@ export class TableComponent implements OnInit, AfterViewInit {
   displayedColumns: string[];
   dataSource : MatTableDataSource<any>;
 
-  constructor(private _liveAnnouncer: LiveAnnouncer) {}
-  // ngOnChanges(changes: SimpleChanges): void {
-  //   this.dataSource = new MatTableDataSource(this.timeseries);
-    
-  // }
+  constructor(private _liveAnnouncer: LiveAnnouncer) {}    
 
   @ViewChild(MatSort) sort: MatSort;
 
@@ -52,11 +47,9 @@ export class TableComponent implements OnInit, AfterViewInit {
         timecol['Time Period'] = value.split("T")[0];
         this.overalltime.filter((value2) => value2.timePeriod === value).map((value2) => {
           timecol[value2.category] = value2.value;
-          // console.log(timecol);
         })
         this.timeseries.push(timecol);
       })
-      // console.log(this.timeseries)
 
     this.dataSource = new MatTableDataSource(this.timeseries);
   }

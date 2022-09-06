@@ -10,24 +10,6 @@
     (matSortChange)="announceSortChange($event)"
     class="mat-elevation-z8 mx-5 shadow-none mb-10"
   >
-    <!-- Position Column -->
-    <!-- <ng-container matColumnDef="ts_Time_Period">
-      <th
-        mat-header-cell
-        *matHeaderCellDef
-        mat-sort-header
-        sortActionDescription="Sort by ts_Time_Period"
-        class="text-base"
-      >
-        Date
-      </th>
-      <td mat-cell *matCellDef="let element">
-        {{ element.ts_Time_Period.split("T")[0] }}
-      </td>
-    </ng-container> -->
-
-    <!-- Name Column -->
-
     <ng-container
       *ngFor="let column of displayedColumns"
       matColumnDef="{{ column }}"
@@ -45,112 +27,6 @@
         {{ element[column] }}
       </td>
     </ng-container>
-
-    <!-- <ng-container matColumnDef="ts_Weather_Condition">
-      <th
-        mat-header-cell
-        *matHeaderCellDef
-        mat-sort-header
-        sortActionDescription="Sort by ts_Weather_Condition"
-        class="text-base"
-      >
-        Weather Condition
-      </th>
-      <td mat-cell *matCellDef="let element">
-        {{ element.ts_Weather_Condition }}
-      </td>
-    </ng-container>
-
-    <ng-container matColumnDef="ts_Ruling_Party">
-      <th
-        mat-header-cell
-        *matHeaderCellDef
-        mat-sort-header
-        sortActionDescription="Sort by ts_Ruling_Party"
-        class="text-base"
-      >
-        Ruling Party
-      </th>
-      <td mat-cell *matCellDef="let element">
-        {{ element.ts_Ruling_Party }}
-      </td>
-    </ng-container>
-
-    <ng-container matColumnDef="ts_Skilled_Available">
-      <th
-        mat-header-cell
-        *matHeaderCellDef
-        mat-sort-header
-        sortActionDescription="Sort by ts_Skilled_Available"
-        class="text-base"
-      >
-        Skilled Available
-      </th>
-      <td mat-cell *matCellDef="let element">
-        {{ element.ts_Skilled_Available }}
-      </td>
-    </ng-container>
-
-    <ng-container matColumnDef="ts_Transportation_Cost">
-      <th
-        mat-header-cell
-        *matHeaderCellDef
-        mat-sort-header
-        sortActionDescription="Sort by ts_Transportation_Cost"
-        class="text-base"
-      >
-        Transportation Cost (/kg.km)
-      </th>
-      <td mat-cell *matCellDef="let element">
-        {{ element.ts_Transportation_Cost }}
-      </td>
-    </ng-container>
-
-    <ng-container matColumnDef="ts_Vendors_Available">
-      <th
-        mat-header-cell
-        *matHeaderCellDef
-        mat-sort-header
-        sortActionDescription="Sort by ts_Vendors_Available"
-        class="text-base"
-      >
-        Vendors Available
-      </th>
-      <td mat-cell *matCellDef="let element">
-        {{ element.ts_Vendors_Available }}
-      </td>
-    </ng-container>
-
-    <ng-container matColumnDef="ts_Labour_Cost">
-      <th
-        mat-header-cell
-        *matHeaderCellDef
-        mat-sort-header
-        sortActionDescription="Sort by ts_Labour_Cost"
-        class="text-base"
-      >
-        Labour Cost (/month)
-      </th>
-      <td mat-cell *matCellDef="let element">
-        {{ element.ts_Labour_Cost }}
-      </td>
-    </ng-container>
-
-    <ng-container matColumnDef="ts_Work_Rate">
-      <th
-        mat-header-cell
-        *matHeaderCellDef
-        mat-sort-header
-        sortActionDescription="Sort by ts_Work_Rate"
-        class="text-base"
-      >
-        Work Rate (projects/year)
-      </th>
-      <td mat-cell *matCellDef="let element">
-        {{ element.ts_Work_Rate }}
-      </td>
-    </ng-container> -->
-
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
   </table>

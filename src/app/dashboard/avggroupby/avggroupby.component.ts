@@ -2,12 +2,13 @@ import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/cor
 import { ChartConfiguration, ChartData, ChartEvent, ChartType } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
 import DataLabelsPlugin from 'chartjs-plugin-datalabels'
-import { AvgTimeseries } from 'src/app/AvgTimeseries';
 import { AvgNumerical } from 'src/app/AvgNumerical';
 import {FormGroup, FormControl} from '@angular/forms';
 import { CitiesService } from 'src/app/services/cities.service';
 import { ActivatedRoute } from '@angular/router';
-
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { DialogcategoricalComponent } from '../dialogcategorical/dialogcategorical.component';
+import { DialognumericalComponent } from '../dialognumerical/dialognumerical.component';
 @Component({
   selector: 'app-avggroupby',
   templateUrl: './avggroupby.component.html',
@@ -50,7 +51,7 @@ export class AvggroupbyComponent implements OnInit, OnChanges {
 
   public barChartData: ChartData<'bar'>; 
 
-  constructor(private citiesService : CitiesService,private activatedroute : ActivatedRoute) { }
+  constructor(private citiesService : CitiesService,private activatedroute : ActivatedRoute, public dialog: MatDialog) { }
   
   ngOnChanges(): void {
     // let data: any[] = []
@@ -122,8 +123,8 @@ export class AvggroupbyComponent implements OnInit, OnChanges {
     {
       this.start = this.range.value.start.toISOString()
       this.end = this.range.value.end.toISOString()
-      this.citiesService.getGroupAvgNumericalTimebyIdandRange(this.cityId, this.start, this.end).subscribe(
-        (responsedata) => { 
+     /* this.citiesService.getGroupAvgNumericalTimebyIdandRange(this.cityId, this.start, this.end).subscribe(
+        (responsedata:any) => { 
           this.avggroupbyfetch = responsedata;
           let data = this.avggroupbyfetch.filter((value) => (
             value.numerical === this.switchY
@@ -143,7 +144,7 @@ export class AvggroupbyComponent implements OnInit, OnChanges {
           
           this.isfetch = true;
         }
-      );
+      );*/
     }
   }
 
@@ -188,7 +189,27 @@ export class AvggroupbyComponent implements OnInit, OnChanges {
     };
   }
   }
+
+  openDialogNumerical(): void {
+    const dialogRef = this.dialog.open(DialognumericalComponent, {
+      width: '500px',
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+  }
   
+  openDialogCategorical(): void {
+    const dialogRef = this.dialog.open(DialogcategoricalComponent, {
+      width: '710px',
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+  }
+
 
   ngOnInit(): void {
     this.switchlistX = this.avggroupby.map((value) => <string>(value.category)).filter((value, index, self) => self.indexOf(value) === index)

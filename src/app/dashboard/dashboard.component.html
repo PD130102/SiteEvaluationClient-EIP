@@ -1,15 +1,18 @@
 <!-- lol -->
 <div class="px-10 py-10">
   <app-overview
+    *ngIf="city && avgnumericaltime"
     [citydetails]="city[0]"
     [avgnumericaldetails]="avgnumericaltime"
   ></app-overview>
   <div class="flex flex-wrap">
     <app-completedprojects
+      *ngIf="city"
       class="flex-auto mr-5"
       [citydetails]="city[0]"
     ></app-completedprojects>
     <app-projectstats
+      *ngIf="city"
       class="flex-auto"
       [citydetails]="city[0]"
     ></app-projectstats>
@@ -33,20 +36,6 @@
       [numericaltime]="numericaltime"
     ></app-table>
   </div>
-  <!-- <div class="flex flex-wrap">
-    <app-avggroupbyrp
-      class="flex-auto mr-5"
-      [avggroupbyrp]="avgtimeseriesGrpRp"
-    ></app-avggroupbyrp>
-    <app-avggroupbywc class="flex-auto"></app-avggroupbywc>
-    <app-avggroupbywc
-      class="flex-auto"
-      [avggroupbywc]="avgtimeseriesGrpWc"
-    ></app-avggroupbywc>
-  </div>
-  <div class="flex flex-wrap">
-    <app-table class="flex-auto" [timeseries]="timeseriesstatic"></app-table>
-  </div> -->
 </div>
-{{ overalltime | json }}
+<!-- {{ overalltime | json }} -->
 <!-- {{ categoricaltime | json }} -->

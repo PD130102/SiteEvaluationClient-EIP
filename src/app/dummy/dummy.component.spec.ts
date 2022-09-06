@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AvggroupbyrpComponent } from './avggroupbyrp.component';
+import { DummyComponent } from './dummy.component';
 
-describe('AvggroupbyrpComponent', () => {
-  let component: AvggroupbyrpComponent;
-  let fixture: ComponentFixture<AvggroupbyrpComponent>;
+describe('DummyComponent', () => {
+  let component: DummyComponent;
+  let fixture: ComponentFixture<DummyComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AvggroupbyrpComponent ]
+      declarations: [ DummyComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(AvggroupbyrpComponent);
+    fixture = TestBed.createComponent(DummyComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

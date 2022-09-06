@@ -1,7 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { AvgNumerical } from 'src/app/AvgNumerical';
-import { AvgTimeseries } from '../../AvgTimeseries';
 import { City } from '../../City';
 
 @Component({

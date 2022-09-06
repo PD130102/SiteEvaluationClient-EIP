@@ -15,14 +15,6 @@ export class CompletedprojectsComponent implements OnInit {
   public doughnutChartType: ChartType = 'doughnut';
 
   constructor() { }
-  // ngOnChanges(changes: SimpleChanges): void {
-  //   this.doughnutChartData = {
-  //     labels: this.doughnutChartLabels,
-  //     datasets: [
-  //       { data: [ this.citydetails.city_ProjectsCompletedOntime, this.citydetails.city_ProjectsCompletedlate] }
-  //     ]
-  //   };
-  // }
 
   ngOnInit(): void {
     this.doughnutChartData = {

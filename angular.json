@@ -9,7 +9,8 @@
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
-      "architect": {
+      "architect": 
+      {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
@@ -61,8 +62,13 @@
           },
           "defaultConfiguration": "production"
         },
-        "serve": {
+        "serve": 
+        {
           "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "SiteEvaluationClient:build",
+            "proxyConfig": "src/proxy.conf.json"
+          },
           "configurations": {
             "production": {
               "browserTarget": "SiteEvaluationClient:build:production"
@@ -73,7 +79,8 @@
           },
           "defaultConfiguration": "development"
         },
-        "extract-i18n": {
+        "extract-i18n": 
+        {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
             "browserTarget": "SiteEvaluationClient:build"

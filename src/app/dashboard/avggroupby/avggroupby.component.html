@@ -1,15 +1,15 @@
 <div class="card transition transform hover:-translate-y-1 shadow-xl mb-10">
   <div class="card-body">
-    <h2 class="card-title text-3xl mb-4">Group Stat</h2>
+    <h2 class="card-title text-3xl mb-4">Group Stats</h2>
     <div class="flex flex-wrap justify-between">
       <div>
         <div class="py-5">
           <label for="select1" class="font-semibold text-xl mx-2"
-            >numerical :
+            >Numerical :
           </label>
           <select
             id="select1"
-            class="select select-secondary select-lg max-w-xs"
+            class="select select-secondary select-lg max-w-xs mx-3"
             [(ngModel)]="switchY"
             (change)="Switch()"
           >
@@ -20,14 +20,34 @@
               Avg {{ numerical }}
             </option>
           </select>
+          <button
+            title="add new numerical"
+            class="btn btn-square align-middle"
+            (click)="openDialogNumerical()"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-7 w-7"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="3"
+                d="M12 4v16m8-8H4"
+              />
+            </svg>
+          </button>
         </div>
         <div class="py-5">
           <label for="select2" class="font-semibold text-xl mx-2"
-            >group by :</label
+            >Category :</label
           >
           <select
             id="select2"
-            class="select select-secondary select-lg max-w-xs"
+            class="select select-secondary select-lg max-w-xs mx-3"
             [(ngModel)]="switchX"
             (change)="Switch()"
           >
@@ -35,6 +55,26 @@
               {{ category }}
             </option>
           </select>
+          <button
+            title="add new category or subcategory"
+            class="btn btn-square align-middle"
+            (click)="openDialogCategorical()"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-7 w-7"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="3"
+                d="M12 4v16m8-8H4"
+              />
+            </svg>
+          </button>
         </div>
         <div class="datepicker py-5">
           <mat-form-field appearance="fill">

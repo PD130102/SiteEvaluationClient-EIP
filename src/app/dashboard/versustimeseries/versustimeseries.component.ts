@@ -1,8 +1,9 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { Timeseries } from 'src/app/Timeseries';
 import { Chart, ChartConfiguration, ChartEvent, ChartType } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts'
 import { PeriodicData } from 'src/app/PeriodicData';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { DialognumericalComponent } from '../dialognumerical/dialognumerical.component';
 
 @Component({
   selector: 'app-versustimeseries',
@@ -10,7 +11,6 @@ import { PeriodicData } from 'src/app/PeriodicData';
   styleUrls: ['./versustimeseries.component.css']
 })
 export class VersustimeseriesComponent implements OnInit , OnChanges {
-  // @Input() timeseries : Timeseries[];
   @Input() numericalTime : PeriodicData[];
 
 
@@ -29,7 +29,7 @@ export class VersustimeseriesComponent implements OnInit , OnChanges {
   public lineChartType: ChartType = 'line';
 
 
-  constructor() { }
+  constructor(public dialog: MatDialog) { }
   ngOnChanges(): void {
     let data =  this.numericalTime.filter((value) => (value.category === this.switchY)).map((value) => <number>(value.value))
 
@@ -85,6 +85,17 @@ export class VersustimeseriesComponent implements OnInit , OnChanges {
     };
     
   }
+
+  openDialogNumerical(): void {
+    const dialogRef = this.dialog.open(DialognumericalComponent, {
+      width: '500px',
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+  }
+
 
   ngOnInit(): void {
     this.switchlist = this.numericalTime.map((value) => value.category).filter((value, index, self) => self.indexOf(value) === index)

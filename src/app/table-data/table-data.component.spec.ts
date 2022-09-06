@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AvggroupbywcComponent } from './avggroupbywc.component';
+import { TableDataComponent } from './table-data.component';
 
-describe('AvggroupbywcComponent', () => {
-  let component: AvggroupbywcComponent;
-  let fixture: ComponentFixture<AvggroupbywcComponent>;
+describe('TableDataComponent', () => {
+  let component: TableDataComponent;
+  let fixture: ComponentFixture<TableDataComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AvggroupbywcComponent ]
+      declarations: [ TableDataComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(AvggroupbywcComponent);
+    fixture = TestBed.createComponent(TableDataComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
