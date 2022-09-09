@@ -79,8 +79,8 @@ export class DummyComponent implements OnInit {
   }
 
   ngOnInit(): void {
-  }
 
+  }
   getWeather(city: any) {
     this.data.getWeather(city).subscribe((response: any) => {
       if (typeof (response) !== 'undefined') {
@@ -92,7 +92,7 @@ export class DummyComponent implements OnInit {
   }
 
   //function to show more data regarding the chart
-  public chartClicked(element: any)
+  public chartClicked()
   {
     alert("chart clicked");
   }
@@ -153,3 +153,4 @@ class city
   longitude:number;
   factor3:any;
 }
+
