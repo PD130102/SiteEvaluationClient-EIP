@@ -3,10 +3,20 @@
     <mat-card-subtitle>{{sector}}</mat-card-subtitle>
     <div class="city_card_holder"  >
         <mat-card *ngFor = "let city of cities; let i=index;" class="card" id = "{{city.city_name}}">
-
             <mat-card-title>{{city.city_name}}</mat-card-title>
             <mat-card-subtitle>{{sector}}</mat-card-subtitle>
-            
+            <mat-card-header>
+            <button type='button' (click)="getWeather(cities[i].city_name)" >Get Weather</button>
+            &nbsp;
+            <em>
+                &nbsp;
+                <em>Temperature : {{temperature}}</em>
+                &nbsp;
+                <em>Humidity : {{humidity}}</em>
+                &nbsp;
+                <em>Pressure : {{pressure}}</em>
+                &nbsp;
+            </em></mat-card-header>
             <!-- add elements after the divs -->
             <!--internal cards to hold the various factors--> 
             <div class = "attribute_holder" >
@@ -22,13 +32,13 @@
                             [options]="chartOptions"
                             (chartClick)="chartClicked($event)">
                         </canvas-->
-                        <span  *ngIf = "city[box]['type'] == 'string' "><img src = 'assets/icons/{{weather[i]}}.png' class="weather"></span> 
+                        <!-- <span  *ngIf = "city[box]['type'] == 'string' "><img src = 'assets/icons/{{weather[i]}}.png' class="weather"></span>  -->
                     </div>
-                </div>
+                </div> 
             </div> 
             
             <div class = "attribute_holder" style = "display:none;">
-                <div class = "box"  *ngFor = "let box of boxes | slice : 3 : 6" >
+                <div class = "box"  *ngFor = "let box of boxes | slice : 3 : 6" > 
                     <mat-card-title class="factor">{{box}}</mat-card-title>
                 </div>
             </div> 
@@ -56,5 +66,3 @@
         </mat-card>
     </div>
 </div>
-
-  

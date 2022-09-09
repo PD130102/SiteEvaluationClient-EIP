@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { CompanyDataService } from '../services/company-data.service';
 import { ChartOptions } from 'chart.js';
+import { WeatherserviceService } from '../services/weatherservice.service';
 
 @Component({
   selector: 'app-dummy',
@@ -22,14 +23,16 @@ export class DummyComponent implements OnInit {
   length:number;
   pages :any = [];
   boxes = ["factor1", "factor2","factor3","factor4","factor5","factor6","factor7","factor8","factor9"];// just to create various factors to affect the given city
-
+  pressure : any;
+  humidity : any;
+  temperature : any;
   //chartdata
   public chartOptions: any = {
     responsive: true,
     maintainAspectRatio: false,
   };
   
-  constructor(private list: CompanyDataService,) 
+  constructor(private list: CompanyDataService,private data : WeatherserviceService) 
   { 
     this.cities = this.list.get_cities();
     this.length = this.cities.length
@@ -47,23 +50,24 @@ export class DummyComponent implements OnInit {
     }
 
     //to get the coordinates of the city
-    for(let i = 0 ; i< this.cities.length ; i++)
-    {
+    // for(let i = 0 ; i< this.cities.length ; i++)
+    // {
 
-      this.list.getCoordinates(this.cities[i].city_name).subscribe((response: any) =>
-      {
-        if(typeof(response[0]) !== 'undefined')
-        { 
-          this.list.getWeather(response[0].lat,response[0].lon).subscribe((weather: any) =>
-          {
-            if(typeof(weather) !== 'undefined')
-              this.weather[i] = weather.weather[0].main;
-          });
-        }
-      });
-      //this.cities[i].factor3.data_sets = this.weather[i];
-      console.log("weather:",this.weather);
-    }  
+    //   this.list.getCoordinates(this.cities[i].city_name).subscribe((response: any) =>
+    //   {
+    //     if(typeof(response[0]) !== 'undefined')
+    //     { 
+    //       this.list.getWeather(response[0].lat,response[0].lon).subscribe((weather: any) =>
+    //       {
+    //         if(typeof(weather) !== 'undefined')
+    //           this.weather[i] = weather.weather[0].main;
+    //       });
+    //     }
+    //   });
+    //   //this.cities[i].factor3.data_sets = this.weather[i];
+    //   console.log("weather:",this.weather);
+    // }  
+
     //to check the weather
     /*
     
@@ -74,7 +78,19 @@ export class DummyComponent implements OnInit {
       this.pages[i] = 0;
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
+
+  getWeather(city: any) {
+    this.data.getWeather(city).subscribe((response: any) => {
+      if (typeof (response) !== 'undefined') {
+        this.pressure = response.current.pressure_mb;
+        this.humidity = response.current.humidity;
+        this.temperature = response.current.temp_c;
+      }
+    });
+  }
+
   //function to show more data regarding the chart
   public chartClicked(element: any)
   {
